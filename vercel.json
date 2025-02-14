@@ -1,13 +1,20 @@
 {
     "version": 2,
-    "buildCommand": "composer install --optimize-autoloader --no-dev && php artisan config:cache && php artisan route:cache && php artisan view:cache",
-    "outputDirectory": "public",
+    "builds": [
+        {
+            "src": "api/index.php",
+            "use": "@vercel/static-build"
+        }
+    ],
     "routes": [
         { "src": "/(.*)", "dest": "/public/index.php" }
     ],
+    "buildCommand": "composer install --no-dev && php artisan config:cache && php artisan route:cache && php artisan view:cache",
+    "outputDirectory": "public",
     "env": {
         "APP_ENV": "production",
         "APP_DEBUG": "false",
+        "APP_URL": "https://yourproductionurl.com",
         "APP_KEY": "base64:erwuRL8FtaYwBtp1wnex81N/6lgn5TK3f6zmQ9U39Uw=",
         "CACHE_DRIVER": "array",
         "SESSION_DRIVER": "cookie",
@@ -18,6 +25,6 @@
         "DB_PORT": "3306",
         "DB_DATABASE": "kostanku2025_wheatarea",
         "DB_USERNAME": "kostanku2025_wheatarea",
-        "DB_PASSWORD": "your-db-password"
+        "DB_PASSWORD": "442d9b56a23174ddca3bfd613e60c512b29e1a04"
     }
 }
