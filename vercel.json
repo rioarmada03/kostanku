@@ -2,15 +2,16 @@
     "version": 2,
     "builds": [
         {
-            "src": "api/index.php",
-            "use": "@vercel/static-build"
+            "src": "public/index.php",
+            "use": "@vercel/php"
         }
     ],
     "routes": [
-        { "src": "/(.*)", "dest": "/public/index.php" }
+        {
+            "src": "/(.*)",
+            "dest": "/public/index.php"
+        }
     ],
-    "buildCommand": "curl -sS https://getcomposer.org/installer | php && php composer.phar install --no-dev && php artisan config:cache && php artisan route:cache && php artisan view:cache",
-    "outputDirectory": "public",
     "env": {
         "APP_ENV": "production",
         "APP_DEBUG": "false",
@@ -26,5 +27,6 @@
         "DB_DATABASE": "kostanku2025_wheatarea",
         "DB_USERNAME": "kostanku2025_wheatarea",
         "DB_PASSWORD": "442d9b56a23174ddca3bfd613e60c512b29e1a04"
-    }
+    },
+    "buildCommand": "curl -sS https://getcomposer.org/installer | php && php composer.phar install --no-dev && php artisan config:cache && php artisan route:cache && php artisan view:cache"
 }
