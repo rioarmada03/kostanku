@@ -9,9 +9,6 @@
     "routes": [
         { "src": "/(.*)", "dest": "/public/index.php" }
     ],
-    "rewrites": [
-        {"source":"/(.*)", "destination": "/"}
-    ],
     "buildCommand": "composer install --no-dev && php artisan config:cache && php artisan route:cache && php artisan view:cache",
     "outputDirectory": "public",
     "env": {
