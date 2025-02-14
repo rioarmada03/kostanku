@@ -1,21 +1,15 @@
 {
     "version": 2,
-    "functions": {
-        "api/index.php": {
-            "runtime": "vercel-php@0.6.0"
-        }
-    },
-    "routes": [
+    "builds": [
         {
-            "src": "/(.*)",
-            "dest": "/resources/views/survey.blade.php"
-        },
-        {
-            "src": "/(.*)",
-            "dest": "/api/index.php"
+            "src": "api/index.php",
+            "use": "@vercel/static-build"
         }
     ],
-    "buildCommand": "composer install --no-dev && php artisan config:cache && php artisan route:cache && php artisan view:cache",
+    "routes": [
+        { "src": "/(.*)", "dest": "/public/index.php" }
+    ],
+    "buildCommand": "curl -sS https://getcomposer.org/installer | php && php composer.phar install --no-dev && php artisan config:cache && php artisan route:cache && php artisan view:cache",
     "outputDirectory": "public",
     "env": {
         "APP_ENV": "production",
