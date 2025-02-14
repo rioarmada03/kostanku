@@ -1,12 +1,9 @@
 {
     "version": 2,
     "routes": [
-        { "src": "/(.*)", "dest": "/public/index.php" }
-    ],
-    "builds": [
         {
-            "src": "public/index.php",
-            "use": "@vercel/php"
+            "src": "/(.*)",
+            "dest": "/public/index.php"
         }
     ],
     "buildCommand": "composer install --no-dev && php artisan config:cache && php artisan route:cache && php artisan view:cache",
