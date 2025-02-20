@@ -29,6 +29,7 @@
         "DB_HOST": "vv22c.h.filess.io",
         "DB_PORT": "3306",
         "DB_DATABASE": "kostanku2025_wheatarea",
-        "DB_USERNAME": "kostanku2025_wheatarea"
+        "DB_USERNAME": "kostanku2025_wheatarea",
+        "DB_PASSWORD":"442d9b56a23174ddca3bfd613e60c512b29e1a04"
     }
 }
