@@ -114,59 +114,59 @@ class KosController extends Controller
     // }
 
     public function search(Request $request)
-{
-    $kos = Kos::all();
-    $preferences = [
-        'location' => $request->location,
-        'typekost' => $request->typekost,
-        'price' => $request->price,
-        'facilities' => $request->facilities
-    ];
+    {
+        $kos = Kos::all();
+        $preferences = [
+            'location' => $request->location,
+            'typekost' => $request->typekost,
+            'price' => $request->price,
+            'facilities' => $request->facilities
+        ];
 
-    $weights = [
-        'location' => 0.4,
-        'typekost' => 0.1,
-        'price' => 0.3,
-        'facilities' => 0.2
-    ];
+        $weights = [
+            'location' => 0.4,
+            'typekost' => 0.1,
+            'price' => 0.3,
+            'facilities' => 0.2
+        ];
 
-    $results = $kos->map(function ($kost) use ($preferences, $weights) {
-        $score = 0;
+        $results = $kos->map(function ($kost) use ($preferences, $weights) {
+            $score = 0;
 
-        if (!empty($preferences['location'])) {
-            $score += $weights['location'] * ($kost->address === $preferences['location'] ? 1 : 0);
-        }
+            if (!empty($preferences['location'])) {
+                $score += $weights['location'] * ($kost->address === $preferences['location'] ? 1 : 0);
+            }
 
-        if (!empty($preferences['typekost'])) {
-            $score += $weights['typekost'] * ($kost->typekost === $preferences['typekost'] ? 1 : 0);
-        }
+            if (!empty($preferences['typekost'])) {
+                $score += $weights['typekost'] * ($kost->typekost === $preferences['typekost'] ? 1 : 0);
+            }
 
-        if (!empty($preferences['price'])) {
-            $score += $weights['price'] * ($kost->price <= $preferences['price'] ? 1 : 0);
-        }
+            if (!empty($preferences['price'])) {
+                $score += $weights['price'] * ($kost->price <= $preferences['price'] ? 1 : 0);
+            }
 
-        if (!empty($preferences['facilities'])) {
-            $matchedFacilities = collect($preferences['facilities'])->filter(function ($facility) use ($kost) {
-                return str_contains($kost->facilities, $facility);
-            })->count();
+            if (!empty($preferences['facilities'])) {
+                $matchedFacilities = collect($preferences['facilities'])->filter(function ($facility) use ($kost) {
+                    return str_contains($kost->facilities, $facility);
+                })->count();
 
-            $totalFacilities = count($preferences['facilities']);
-            $score += $weights['facilities'] * ($matchedFacilities / $totalFacilities);
-        }
+                $totalFacilities = count($preferences['facilities']);
+                $score += $weights['facilities'] * ($matchedFacilities / $totalFacilities);
+            }
 
-        $kost->score = $score; 
+            $kost->score = $score;
 
-        return $kost;
-    });
+            return $kost;
+        });
 
-    $filteredResults = $results->filter(function ($kost) {
-        return $kost->score > 0;
-    });
+        $filteredResults = $results->filter(function ($kost) {
+            return $kost->score > 0;
+        });
 
-    $sortedResults = $filteredResults->sortByDesc('score');
+        $sortedResults = $filteredResults->sortByDesc('score');
 
-    return view('results', ['results' => $sortedResults]);
-}
+        return view('results', ['results' => $sortedResults]);
+    }
 
     public function showRoute($id)
     {
@@ -206,6 +206,4 @@ class KosController extends Controller
 
         return redirect()->route('home')->with('success', 'Kos berhasil ditambahkan!');
     }
-
 }
-
