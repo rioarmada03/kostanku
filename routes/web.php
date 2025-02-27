@@ -1,14 +1,14 @@
 <?php
 
+use App\Http\Controllers\AboutController;
+use App\Http\Controllers\ContactController;
 use App\Http\Controllers\KosController;
+use Illuminate\Support\Facades\Route;
+
 
 Route::get('/', [KosController::class, 'index'])->name('home');
-Route::get('/tentang-kami', function () {
-    return view('about');
-})->name('about');
-Route::get('/kontak', function () {
-    return view('contact');
-})->name('contact');
+Route::get('/tentang-kami', [AboutController::class, 'about']);
+Route::get('/kontak', [ContactController::class, 'index']);
 Route::get('/tambah-kos', [KosController::class, 'create'])->name('addKos');
 Route::post('/tambah-kos', [KosController::class, 'store'])->name('storeKos');
 Route::post('/search', [KosController::class, 'search'])->name('search');
