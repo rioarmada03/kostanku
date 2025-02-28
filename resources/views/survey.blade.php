@@ -3,7 +3,7 @@
 @section('container')
 <link rel="stylesheet" href="css/style.css">
 <div class="">
-    <form method="POST" action="{{ route('search') }}">
+    <form method="GET" action="{{ route('search') }}">
         @csrf
         <!-- Input Lokasi -->
         <div class="form-group">
