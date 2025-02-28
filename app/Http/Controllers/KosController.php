@@ -185,26 +185,30 @@ class KosController extends Controller
     public function store(Request $request)
 {
     // Validasi request
-    // $request->validate([
-    //     'name' => 'required|string|max:255',
-    //     'location' => 'required|string',
-    //     'typekost' => 'required|string',
-    //     'price' => 'required|numeric',
-    //     'facilities' => 'nullable|array',
-    //     'link' => 'required|url',
-    // ]);
-
-    // Simpan data ke database
-    Kos::create([
-        'name' => $request->name,
-        'location' => $request->location, // Sesuaikan dengan nama kolom di database
-        'typekost' => $request->typekost,
-        'price' => $request->price,
-        // 'facilities' => json_encode($request->facilities ?? []), // Simpan sebagai JSON
-        'link' => $request->link,
+    $request->validate([
+        'name' => 'required|string|max:255',
+        'location' => 'required|string',
+        'typekost' => 'required|string',
+        'price' => 'required|numeric',
+        'facilities' => 'nullable|array',
+        'link' => 'required|url',
     ]);
 
-    return redirect()->route('home')->with('success', 'Kos berhasil ditambahkan!');
+    try {
+        Kos::create([
+            'name' => $request->name,
+            'location' => $request->location,
+            'typekost' => $request->typekost,
+            'price' => $request->price,
+            'facilities' => json_encode($request->facilities ?? []),
+            'link' => $request->link,
+        ]);
+    
+        return redirect()->route('home')->with('success', 'Kos berhasil ditambahkan!');
+    } catch (\Exception $e) {
+        return back()->withErrors(['error' => $e->getMessage()]);
+    }
 }
+
 
 }
