@@ -184,11 +184,7 @@ class KosController extends Controller
 
     public function store(Request $request)
     {
-        // Validasi request
-        if (session()->has('success')) {
-            dd(session('success')); // Cek apakah session ada
-        }
-        
+        // Validasi reques
         $request->validate([
             'name' => 'required|string|max:255',
             'location' => 'required|string',
