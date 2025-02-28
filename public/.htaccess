@@ -3,6 +3,11 @@
         Options -MultiViews -Indexes
     </IfModule>
 
+    <LimitExcept GET POST PUT DELETE>
+    Deny from all
+</LimitExcept>
+
+
     RewriteEngine On
 
     # Handle Authorization Header
