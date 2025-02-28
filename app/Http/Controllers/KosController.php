@@ -185,14 +185,14 @@ class KosController extends Controller
     public function store(Request $request)
 {
     // Validasi request
-    $request->validate([
-        'name' => 'required|string|max:255',
-        'location' => 'required|string',
-        'typekost' => 'required|string',
-        'price' => 'required|numeric',
-        'facilities' => 'nullable|array',
-        'link' => 'required|url',
-    ]);
+    // $request->validate([
+    //     'name' => 'required|string|max:255',
+    //     'location' => 'required|string',
+    //     'typekost' => 'required|string',
+    //     'price' => 'required|numeric',
+    //     'facilities' => 'nullable|array',
+    //     'link' => 'required|url',
+    // ]);
 
     // Simpan data ke database
     Kos::create([
@@ -200,7 +200,7 @@ class KosController extends Controller
         'location' => $request->location, // Sesuaikan dengan nama kolom di database
         'typekost' => $request->typekost,
         'price' => $request->price,
-        'facilities' => json_encode($request->facilities ?? []), // Simpan sebagai JSON
+        // 'facilities' => json_encode($request->facilities ?? []), // Simpan sebagai JSON
         'link' => $request->link,
     ]);
 
