@@ -14,6 +14,8 @@
 
         <form method="POST" action="{{ route('storeKos', [], true) }}">
 
+        @csrf
+
         <div class="form-group">
             <label for="name">Nama Kos:</label>
             <input type="text" name="name" id="name" required>
