@@ -12,7 +12,7 @@
         <p style="color: green;">{{ session('success') }}</p>
     @endif
 
-        <form action="{{ route('storeKos', [], true) }}" method="POST">
+        <form method="POST" action="{{ route('store', [], true) }}">
 
         @csrf
 
