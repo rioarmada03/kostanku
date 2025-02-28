@@ -9,10 +9,9 @@
 body {
     background-color: #F8F9FA;
     color: #333;
-    padding-top: 80px; /* Sesuaikan dengan tinggi header */
 }
 
-/* Header */
+/* Ini header nav */
 header {
     background-color: #007BFF;
     color: white;
