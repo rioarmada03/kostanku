@@ -10,7 +10,8 @@ Route::get('/', [KosController::class, 'index'])->name('home');
 Route::get('/tentang-kami', [AboutController::class, 'about']);
 Route::get('/kontak', [ContactController::class, 'index']);
 Route::get('/tambah-kos', [KosController::class, 'create'])->name('addKos');
-Route::post('/tambah-kos', [KosController::class, 'store'])->name('storeKos');
+Route::post('/tambah-kos', [KosController::class, 'store'])->name('tambah-kos');
+
 Route::get('/search', [KosController::class, 'search'])->name('search');
 Route::get('/route/{id}', [KosController::class, 'showRoute'])->name('route');
 
