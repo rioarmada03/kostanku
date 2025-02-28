@@ -23,7 +23,7 @@ header {
     top: 0;
     left: 0;
     width: 100%;
-    height: 60px; /* Tetapkan tinggi header */
+    height: 80px; /* Tetapkan tinggi header */
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     z-index: 1000;
 }
