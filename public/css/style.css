@@ -59,7 +59,7 @@ header .menu a:hover {
 /* Container Utama */
 .container {
     max-width: 800px;
-    margin: 5rem auto 2rem auto;
+    margin: 10rem auto 2rem auto;
     padding: 1.5rem;
     background: #fff;
     border-radius: 8px;
