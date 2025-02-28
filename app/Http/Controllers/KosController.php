@@ -193,9 +193,7 @@ class KosController extends Controller
             'facilities' => 'nullable|array',
             'link' => 'required|url',
         ]);
-    
-        try {
-            Kos::create([
+            $kos = Kos::create([
                 'name' => $request->name,
                 'location' => $request->location, 
                 'typekost' => $request->typekost,
@@ -203,11 +201,10 @@ class KosController extends Controller
                 'facilities' => $request->facilities ?? [], 
                 'link' => $request->link,
             ]);
+
+            dd($kos);
     
             return redirect()->route('home')->with('success', 'Kos berhasil ditambahkan!');
-        } catch (\Exception $e) {
-            return back()->withErrors(['error' => $e->getMessage()]);
-        }
     }
     
 
