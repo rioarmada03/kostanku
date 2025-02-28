@@ -17,6 +17,7 @@
                 <p>Fasilitas: {{ $kos->facilities }}</p>
                 <a href="{{ $kos->link }}" target="_blank" style="text-decoration: none;">Lihat Rute di Google Maps</a>
             </div>
+            <hr>
             <br>
         @endforeach
     @endif
