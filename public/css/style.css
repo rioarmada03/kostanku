@@ -8,10 +8,10 @@
 
 body {
     background-color: #F8F9FA;
-    /* Warna abu-abu terang */
     color: #333;
 }
 
+/* Header */
 header {
     background-color: #007BFF;
     color: white;
@@ -29,32 +29,44 @@ header {
 
 header .logo img {
     height: auto;
-    width: 12%;
+    width: 150px;
+}
+
+header .menu {
+    display: flex;
+    gap: 15px;
 }
 
 header .menu a {
     color: white;
     text-decoration: none;
-    margin-left: 20px;
     font-size: 1rem;
     padding: 8px 12px;
     border-radius: 5px;
+    transition: background-color 0.3s ease-in-out;
 }
 
 header .menu a:hover {
     background-color: rgba(255, 255, 255, 0.2);
 }
 
+.menu a.active {
+    color: #007BFF;
+    font-weight: bold;
+    background-color: white;
+}
+
+/* Container Utama */
 .container {
     max-width: 800px;
-    margin: 2rem auto;
+    margin: 5rem auto 2rem auto;
     padding: 1.5rem;
     background: #fff;
     border-radius: 8px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    margin-top: 10%;
 }
 
+/* Form Elements */
 .form-group {
     margin-bottom: 1rem;
 }
@@ -66,15 +78,6 @@ label {
 }
 
 input,
-select .facilities-checkboxes {
-    width: 10%;
-    padding: 0.8rem;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    font-size: 1rem;
-}
-
-input,
 select {
     width: 100%;
     padding: 0.8rem;
@@ -83,50 +86,7 @@ select {
     font-size: 1rem;
 }
 
-button {
-    background-color: #007BFF;
-    color: #fff;
-    padding: 0.8rem 1.5rem;
-    font-size: 1rem;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-button:hover {
-    background-color: #0056b3;
-}
-
-a.button {
-    background-color: #007BFF;
-    color: #fff;
-    padding: 0.8rem 1.5rem;
-    font-size: 1rem;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    text-decoration: none;
-}
-
-
-.checkbox-container {
-    display: flex;
-    flex-wrap: wrap;
-    /* Supaya elemen pindah ke baris baru jika melebihi jumlah */
-    gap: 10px;
-    /* Jarak antar checkbox */
-}
-
-.checkbox-container div {
-    flex: 1 1 calc(25% - 10px);
-    /* Setiap checkbox menempati 25% lebar (4 per baris) */
-    display: flex;
-    align-items: center;
-}
-
-/* Checkbox Container */
+/* Checkbox Styling */
 .checkbox-group {
     display: flex;
     flex-wrap: wrap;
@@ -137,7 +97,6 @@ a.button {
     display: flex;
     align-items: center;
     flex: 1 1 calc(25% - 10px);
-    /* 4 Kolom per baris */
 }
 
 input[type="checkbox"] {
@@ -145,21 +104,26 @@ input[type="checkbox"] {
     width: auto;
 }
 
-/* Styling untuk Checkbox dan Label */
-input[type="checkbox"] {
-    margin: 0px;
-    width: 10%;
-    /* Jarak antara kotak checkbox dan label */
+/* Button */
+button, 
+a.button {
+    background-color: #007BFF;
+    color: #fff;
+    padding: 0.8rem 1.5rem;
+    font-size: 1rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out, transform 0.2s;
 }
 
-.menu a.active {
-    color: #007BFF;
-    font-weight: bold;
-    text-decoration:solid;
-    background-color: white;
+button:hover,
+a.button:hover {
+    background-color: #0056b3;
+    transform: scale(1.05);
 }
 
-
+/* Footer */
 footer {
     text-align: center;
     margin-top: 2rem;
@@ -167,4 +131,36 @@ footer {
     background-color: #F8F9FA;
     font-size: 0.9rem;
     color: #666;
+}
+
+/* Responsiveness */
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .menu {
+        margin-top: 10px;
+    }
+
+    .container {
+        width: 90%;
+        margin-top: 6rem;
+    }
+
+    .checkbox-group label {
+        flex: 1 1 calc(50% - 10px);
+    }
+}
+
+@media (max-width: 480px) {
+    .checkbox-group label {
+        flex: 1 1 100%;
+    }
+
+    button, a.button {
+        width: 100%;
+        text-align: center;
+    }
 }

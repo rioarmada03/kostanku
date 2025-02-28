@@ -3,7 +3,7 @@
 @section('container')
 <link rel="stylesheet" href="css/style.css">
 
-<h1>{!! $contact['title'] !!}</h1>
+<h1>{{ $contact['title'] }}</h1>
 <br>
 <p>Email : {{ $contact['email'] }}</p>
 <p>Telepon : {{ $contact['telepon'] }}</p>

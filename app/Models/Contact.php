@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Contact 
 {
     public static $contact = [
-        'title' => 'Kontak Kami <p>Jika Anda memiliki pertanyaan, masukan, atau ingin bekerja sama dengan kami, jangan ragu untuk menghubungi:</p>',
+        'title' => 'Kontak Kami',
         'email'    => 'support@kostanku.com',
         'telepon' => '+62 812-3456-7890',
         'instagram' => '@kostanku',
