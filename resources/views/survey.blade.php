@@ -5,7 +5,7 @@
 <div class="">
     <form method="POST" action="{{ route('search') }}">
         @csrf
-
+        @method('PUT')
         <!-- Input Lokasi -->
         <div class="form-group">
             <label for="location">Lokasi Daerah Yogyakarta:</label>
