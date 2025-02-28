@@ -14,8 +14,11 @@ class Kos extends Model
         'address',
         'typekost',
         'price',
-        'facilities',
         'link',
+    ];
+
+    protected $casts = [
+        'facilities' => 'array',
     ];
     
 }
