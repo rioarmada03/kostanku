@@ -3,6 +3,15 @@
 @section('container')
 <link rel="stylesheet" href="css/style.css">
 
+<script>
+    $.ajaxSetup({
+    headers: {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    }
+});
+
+</script>
+
 <div class="">
     <h1>Tambah Kos</h1>
     <br>
@@ -13,7 +22,7 @@
     @endif
 
     <form method="POST" action="{{ route('storeKos') }}">
-        @csrf
+        @csrf    
 
         <div class="form-group">
             <label for="name">Nama Kos:</label>
