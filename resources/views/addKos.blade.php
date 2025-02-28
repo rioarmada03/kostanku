@@ -12,7 +12,8 @@
         <p style="color: green;">{{ session('success') }}</p>
     @endif
 
-    <form method="POST" action="{{ route('storeKos') }}">
+        <form action="{{ route('storeKos', [], true) }}" method="POST">
+
         @csrf
 
         <div class="form-group">

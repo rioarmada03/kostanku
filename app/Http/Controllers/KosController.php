@@ -197,10 +197,10 @@ class KosController extends Controller
         try {
             Kos::create([
                 'name' => $request->name,
-                'location' => $request->location, // Pastikan nama kolom sesuai dengan database
+                'location' => $request->location, 
                 'typekost' => $request->typekost,
                 'price' => $request->price,
-                'facilities' => $request->facilities ?? [], // Tidak perlu json_encode() jika di-cast
+                'facilities' => $request->facilities ?? [], 
                 'link' => $request->link,
             ]);
     
