@@ -9,15 +9,9 @@ class Kos extends Model
 {
     use HasFactory;
 
-    protected $fillable = [
-        'name',
-        'address',
-        'typekost',
-        'price',
-        'facilities',
-        'link',
-    ];
+    protected $guarded = ['id'];
 
-    
-    
+    protected $cast = [
+        'fasilities' => 'string',
+    ];
 }

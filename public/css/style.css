@@ -89,17 +89,46 @@ select {
 }
 
 /* Checkbox Styling */
-.checkbox-group {
+/* .checkbox-group {
     display: flex;
     flex-wrap: wrap;
     gap: 10px;
+    flex: 1 1 calc(50% - 10px);
 }
 
 .checkbox-group label {
     display: flex;
     align-items: center;
     flex: 1 1 calc(25% - 10px);
+} */
+
+.checkbox-group {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* 5 kolom sejajar */
+    gap: 8px; /* Jarak antar checkbox */
+    padding: 8px;
 }
+
+.checkbox-group label {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    font-size: 14px; /* Ukuran teks seragam */
+    white-space: nowrap; /* Izinkan teks turun ke baris berikutnya */
+    word-break: break-word; /* Biarkan teks panjang tetap terbaca */
+    width: 100%; 
+}
+
+.checkbox-group input[type="checkbox"] {
+    width: 16px; 
+    height: 16px; 
+    margin-right: 5px;
+    flex-shrink: 0; 
+}
+
+
+
+
 
 input[type="checkbox"] {
     margin-right: 8px;
@@ -133,6 +162,17 @@ footer {
     background-color: #F8F9FA;
     font-size: 0.9rem;
     color: #666;
+}
+
+a .button{
+    background-color: #007BFF;
+    color: #fff;
+    padding: 0.8rem 1.5rem;
+    font-size: 1rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out, transform 0.2s;
 }
 
 /* Responsiveness */

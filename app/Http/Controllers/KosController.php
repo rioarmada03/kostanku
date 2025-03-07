@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\Kos;
+use Illuminate\Http\Request;
+use Illuminate\Routing\Controller;
 
 class KosController extends Controller
 {
@@ -205,5 +206,53 @@ class KosController extends Controller
         ]);
 
         return redirect()->route('home')->with('success', 'Kos berhasil ditambahkan!');
+    }
+
+    public function edit($id){
+        $kos = Kos::findOrFail($id);
+        return view('editKos', compact('kos'));
+    }
+
+    public function update(Request $request, $id){
+        $kos = Kos::findOrFail($id);
+    
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'location' => 'required|string',  
+            'typekost' => 'required|string',
+            'price' => 'required|numeric',
+            'facilities' => 'nullable|array',
+            'link' => 'required|url',
+        ]);
+    
+        // Update data dengan memastikan 'address' sesuai dengan kolom di DB
+        $kos->update([
+            'name' => $request->name,
+            'address' => $request->location,  
+            'typekost' => $request->typekost,
+            'price' => $request->price,
+            'facilities' => $request->facilities ? implode(', ', $request->facilities) : null,
+            'link' => $request->link,
+        ]);
+    
+        return redirect()->route('home')->with('success', 'Kos berhasil diperbarui');
+    }
+
+    public function showAll(){
+        $kos = Kos::paginate(5)->withQueryString();
+        return view('allKos', compact('kos'));
+    }
+
+    public function all(){
+        $kos = Kos::paginate(5)->withQueryString();
+        return view('kos', compact('kos'));
+    }
+
+    public function destroy($id)
+    {
+        $kos = Kos::findOrFail($id);
+        $kos->delete();
+
+        return redirect()->route('home')->with('success', 'Kost berhasil dihapus');
     }
 };

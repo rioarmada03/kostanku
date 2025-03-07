@@ -1,7 +1,7 @@
 @extends('layouts.main')
 
 @section('container')
-<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="{{ asset('css/style.css') }}">
 <div class="">
     <form method="GET" action="{{ route('search') }}">
         @csrf
@@ -52,7 +52,7 @@
         <!-- Checkbox Fasilitas -->
         <div class="form-group">
             <label for="facilities">Fasilitas:</label>
-            <div id="facilities-checkboxes" class="checkbox-container">
+            <div id="facilities-checkboxes" class="checkbox-group">
                 <!-- Checkbox akan diperbarui berdasarkan kategori -->
             </div>
         </div>
