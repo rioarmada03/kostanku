@@ -27,6 +27,3 @@ Route::get('/semua-kos', [KosController::class, 'all'])->name('all');
 Route::get('/login', [LoginController::class, 'index'])->name('login')->middleware(RedirectIfAuthenticated::class);
 Route::post('/login', [LoginController::class, 'authenticate']);
 Route::post('/logout', [LoginController::class, 'logout']);
-
-// Register
-
